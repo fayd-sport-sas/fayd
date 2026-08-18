@@ -40,5 +40,26 @@
     "imagen_url": "https://fayd-web.vercel.app/tendencias/20260818_143936.jpg",
     "creditos": "Foto: Pixabay (licencia libre)",
     "fecha": "2026-08-18T14:39:40.191249"
+  },
+  {
+    "id": "20260818_144728",
+    "tipo": "tendencia",
+    "tendencia": "Blokecore / Footballcore",
+    "titulo": "Blokecore: la camiseta de fútbol ya es moda urbana",
+    "caption": "El Blokecore está pisando fuerte y con el Mundial 2026 en Colombia se va a volver imparable: camisetas de fútbol combinadas con jeans, blazers o joggers para un look casual con actitud. ¿Por qué luce tan bien? Porque mezcla nostalgia deportiva con street style, y eso se ve auténtico, no forzado. Ese estilo que rompe con lo formal y le mete personalidad al outfit es justo lo que vive en el ADN de FAYD. Si quieres inspirarte en este look y armar tu propio estilo footballcore con prendas deportivas que sí van con tu esencia, en FAYD lo tenemos. Escríbenos por WhatsApp y armamos tu look ganador antes de que arranque la fiebre mundialista.",
+    "hashtags": [
+      "#FAYD",
+      "#Blokecore",
+      "#Footballcore",
+      "#EstiloDeportivo",
+      "#Mundial2026",
+      "#ModaUrbana",
+      "#StreetStyle",
+      "#ColombiaDeporte"
+    ],
+    "imagen": "/tendencias/20260818_144728.jpg",
+    "imagen_url": "https://fayd-web.vercel.app/tendencias/20260818_144728.jpg",
+    "creditos": "Foto: Pixabay (licencia libre)",
+    "fecha": "2026-08-18T14:47:32.448066"
   }
 ]
