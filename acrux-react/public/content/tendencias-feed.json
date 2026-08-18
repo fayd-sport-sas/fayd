@@ -81,5 +81,19 @@
     "imagen": "/tendencias/20260818_150829.jpg",
     "creditos": "Foto: Pixabay (licencia libre)",
     "fecha": "2026-08-18T15:08:32.816302"
+  },
+  {
+    "id": "20260818_150904",
+    "tipo": "carrusel",
+    "tendencia": "Blokecore / Footballcore",
+    "titulo": "Blokecore 2026",
+    "caption": "Desliza y elige tu look",
+    "hashtags": [
+      "#FAYD",
+      "#Blokecore"
+    ],
+    "imagen": "/tendencias/20260818_150852.jpg",
+    "creditos": "Fotos: Pixabay (licencia libre)",
+    "fecha": "2026-08-18T15:09:04.080989"
   }
 ]
