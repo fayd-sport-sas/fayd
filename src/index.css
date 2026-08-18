@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tipografía de la marca FAYD */
+@font-face {
+  font-family: 'Exan';
+  src: url('/fonts/Exan-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { @apply bg-white text-black font-sans; }
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.9) inset;
+    -webkit-text-fill-color: black;
+  }
+  section[id] { scroll-margin-top: 80px; }
+}
+
+@layer utilities {
+  /* Wordmark FAYD con la tipografía Exan */
+  .font-exan {
+    font-family: 'Exan', 'Arial Black', sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  @keyframes gradient {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .animate-gradient {
+    animation: gradient 6s ease infinite;
+    background-size: 200% auto;
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50%      { opacity: 0.6; transform: scale(1.05); }
+  }
+  .animate-pulse-slow { animation: pulse-slow 8s ease-in-out infinite; }
+}
