@@ -1,44 +1,50 @@
 [
   {
-    "id": "20260819_125523_0",
-    "tendencia": "Blokecore / Footballcore",
-    "imagen": "/galeria/20260819_125523_0.jpg",
+    "id": "20260819_132935_0",
+    "categoria": "niño",
+    "tendencia": "Niño · conjunto deportivo niño",
+    "imagen": "/galeria/20260819_132935_0.jpg",
     "creditos": "Foto: Pixabay (licencia libre)",
-    "fecha": "2026-08-19T12:55:28.409400"
+    "fecha": "2026-08-19T13:29:42.955332"
   },
   {
-    "id": "20260819_125523_1",
-    "tendencia": "Fan wear",
-    "imagen": "/galeria/20260819_125523_1.jpg",
+    "id": "20260819_132935_1",
+    "categoria": "niña",
+    "tendencia": "Niña · conjunto deportivo niña",
+    "imagen": "/galeria/20260819_132935_1.jpg",
     "creditos": "Foto: Pixabay (licencia libre)",
-    "fecha": "2026-08-19T12:55:33.294067"
+    "fecha": "2026-08-19T13:29:47.736611"
   },
   {
-    "id": "20260819_125523_2",
-    "tendencia": "Auge de marcas locales en indumentaria deportiva",
-    "imagen": "/galeria/20260819_125523_2.jpg",
+    "id": "20260819_132935_2",
+    "categoria": "hombre",
+    "tendencia": "Hombre · camiseta hombre gym",
+    "imagen": "/galeria/20260819_132935_2.jpg",
     "creditos": "Foto: Pixabay (licencia libre)",
-    "fecha": "2026-08-19T12:55:38.075949"
+    "fecha": "2026-08-19T13:29:53.434246"
   },
   {
-    "id": "20260819_125523_3",
-    "tendencia": "Crecimiento del sportswear/activewear",
-    "imagen": "/galeria/20260819_125523_3.jpg",
+    "id": "20260819_132935_3",
+    "categoria": "mujer",
+    "tendencia": "Mujer · leggings mujer gym",
+    "imagen": "/galeria/20260819_132935_3.jpg",
     "creditos": "Foto: Pixabay (licencia libre)",
-    "fecha": "2026-08-19T12:55:42.773228"
+    "fecha": "2026-08-19T13:29:57.707624"
   },
   {
-    "id": "20260819_125523_4",
-    "tendencia": "Personalización y sublimación",
-    "imagen": "/galeria/20260819_125523_4.jpg",
+    "id": "20260819_132935_4",
+    "categoria": "deportiva",
+    "tendencia": "Deportiva · ropa deportiva tendencia tiktok",
+    "imagen": "/galeria/20260819_132935_4.jpg",
     "creditos": "Foto: Pixabay (licencia libre)",
-    "fecha": "2026-08-19T12:55:47.519108"
+    "fecha": "2026-08-19T13:30:02.263808"
   },
   {
-    "id": "20260819_125523_5",
-    "tendencia": "Athleisure / conjuntos deportivos",
-    "imagen": "/galeria/20260819_125523_5.jpg",
+    "id": "20260819_132935_5",
+    "categoria": "deportiva",
+    "tendencia": "Deportiva · outfit gym viral",
+    "imagen": "/galeria/20260819_132935_5.jpg",
     "creditos": "Foto: Pixabay (licencia libre)",
-    "fecha": "2026-08-19T12:55:51.790235"
+    "fecha": "2026-08-19T13:30:08.170275"
   }
 ]
