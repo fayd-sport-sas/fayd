@@ -1,5 +1,24 @@
 [
   {
+    "id": "20260819_065521",
+    "nombre": "Conjunto deportivo FAYD línea adulto",
+    "categoria": "adulto",
+    "precio": 89000,
+    "precio_formateado": "$89.000",
+    "tallas": [],
+    "colores": [],
+    "imagen": "/catalogo/20260819_065521.jpg",
+    "imagen_url": "https://fayd-ten.vercel.app/catalogo/20260819_065521.jpg",
+    "titulo": "Conjunto deportivo FAYD línea adulto",
+    "descripcion": "Conjunto deportivo FAYD línea adulto — Tallas: S, M, L, XL. Escríbenos 💬",
+    "hashtags": [
+      "#FAYD",
+      "#ModaDeportiva",
+      "#Sportswear"
+    ],
+    "fecha": "2026-08-19T06:55:25.058870"
+  },
+  {
     "id": "20260818_140158",
     "nombre": "Conjunto deportivo FAYD línea adulto",
     "categoria": "adulto",
