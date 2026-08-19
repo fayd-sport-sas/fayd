@@ -1,50 +1,56 @@
 [
   {
-    "id": "20260819_133411_0",
+    "id": "20260819_143640_0",
     "categoria": "niño",
     "tendencia": "Niño · conjunto deportivo niño",
-    "imagen": "/galeria/20260819_133411_0.jpg",
-    "creditos": "Foto: Pixabay (licencia libre)",
-    "fecha": "2026-08-19T13:34:18.626947"
+    "imagen": "/galeria/20260819_143640_0.jpg",
+    "fuente": "unsplash",
+    "creditos": "Foto: Unsplash (licencia libre)",
+    "fecha": "2026-08-19T14:36:47.184126"
   },
   {
-    "id": "20260819_133411_1",
+    "id": "20260819_143640_1",
     "categoria": "niña",
     "tendencia": "Niña · conjunto deportivo niña",
-    "imagen": "/galeria/20260819_133411_1.jpg",
-    "creditos": "Foto: Pixabay (licencia libre)",
-    "fecha": "2026-08-19T13:34:23.436787"
+    "imagen": "/galeria/20260819_143640_1.jpg",
+    "fuente": "unsplash",
+    "creditos": "Foto: Unsplash (licencia libre)",
+    "fecha": "2026-08-19T14:36:53.109927"
   },
   {
-    "id": "20260819_133411_2",
+    "id": "20260819_143640_2",
     "categoria": "hombre",
     "tendencia": "Hombre · camiseta hombre gym",
-    "imagen": "/galeria/20260819_133411_2.jpg",
-    "creditos": "Foto: Pixabay (licencia libre)",
-    "fecha": "2026-08-19T13:34:27.876708"
+    "imagen": "/galeria/20260819_143640_2.jpg",
+    "fuente": "unsplash",
+    "creditos": "Foto: Unsplash (licencia libre)",
+    "fecha": "2026-08-19T14:36:58.397650"
   },
   {
-    "id": "20260819_133411_3",
+    "id": "20260819_143640_3",
     "categoria": "mujer",
     "tendencia": "Mujer · leggings mujer gym",
-    "imagen": "/galeria/20260819_133411_3.jpg",
-    "creditos": "Foto: Pixabay (licencia libre)",
-    "fecha": "2026-08-19T13:34:32.315968"
+    "imagen": "/galeria/20260819_143640_3.jpg",
+    "fuente": "unsplash",
+    "creditos": "Foto: Unsplash (licencia libre)",
+    "fecha": "2026-08-19T14:37:05.280485"
   },
   {
-    "id": "20260819_133411_4",
+    "id": "20260819_143640_4",
     "categoria": "deportiva",
-    "tendencia": "Deportiva · outfit gym viral",
-    "imagen": "/galeria/20260819_133411_4.jpg",
-    "creditos": "Foto: Pixabay (licencia libre)",
-    "fecha": "2026-08-19T13:34:40.229643"
+    "tendencia": "Deportiva · ropa deportiva tendencia tiktok",
+    "imagen": "/galeria/20260819_143640_4.jpg",
+    "fuente": "unsplash",
+    "creditos": "Foto: Unsplash (licencia libre)",
+    "fecha": "2026-08-19T14:37:12.641868"
   },
   {
-    "id": "20260819_133411_5",
+    "id": "20260819_143640_5",
     "categoria": "deportiva",
     "tendencia": "Deportiva · fayd sport uniforme",
-    "imagen": "/galeria/20260819_133411_5.jpg",
-    "creditos": "Foto: Pixabay (licencia libre)",
-    "fecha": "2026-08-19T13:34:46.756747"
+    "imagen": "/galeria/20260819_143640_5.jpg",
+    "fuente": "unsplash",
+    "creditos": "Foto: Unsplash (licencia libre)",
+    "fecha": "2026-08-19T14:37:19.795027"
   }
 ]
