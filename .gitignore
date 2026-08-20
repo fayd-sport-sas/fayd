@@ -26,3 +26,6 @@ dist-ssr
 
 # carpeta vieja local (ya borrada del disco)
 /fayd-react
+
+# artefactos de pruebas GUI locales (screenshots)
+/gui-test-screenshots
