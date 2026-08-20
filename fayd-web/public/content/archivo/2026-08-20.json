@@ -1,0 +1,85 @@
+{
+  "tendencias_producto": [
+    {
+      "tendencia": "Blokecore / Footballcore",
+      "descripcion": "Camisetas y uniformes de fútbol se usan como moda urbana cotidiana, combinados con jeans o blazers; es la tendencia estética más fuerte de cara al Mundial 2026 en Colombia.",
+      "fuente": "elcolombiano.com / clustermodanorte.cccucuta.org.co"
+    },
+    {
+      "tendencia": "Fan wear",
+      "descripcion": "Prendas inspiradas en el fútbol pero pensadas para uso diario (no solo deportivo), con códigos estéticos del deporte que conectan emocionalmente con el hincha.",
+      "fuente": "elcolombiano.com"
+    },
+    {
+      "tendencia": "Auge de marcas locales en indumentaria deportiva",
+      "descripcion": "Marcas colombianas ganan terreno frente a multinacionales gracias a personalización, tiempos de producción cortos y comunicación directa con clubes.",
+      "fuente": "infobae.com / elmarketingdeportivo.com"
+    },
+    {
+      "tendencia": "Crecimiento del sportswear/activewear",
+      "descripcion": "Las ventas de ropa deportiva y camisetas técnicas crecen impulsadas por el Mundial 2026 y el estilo de vida activo, con proyección de hasta 30% de crecimiento.",
+      "fuente": "elcolombiano.com (Inexmoda)"
+    },
+    {
+      "tendencia": "Personalización y sublimación",
+      "descripcion": "La impresión personalizada (nombres, escudos, colores de equipo) en poliéster técnico es clave para uniformes de clubes y camisetas de fans.",
+      "fuente": "elcolombiano.com"
+    },
+    {
+      "tendencia": "Athleisure / conjuntos deportivos",
+      "descripcion": "Los conjuntos deportivos de marca (top+leggings, sets) son la categoría de mayor rotación en el mercado mayorista colombiano, con alta demanda en Bogotá.",
+      "fuente": "kikluxe.com"
+    }
+  ],
+  "tendencias_contenido": [
+    {
+      "formato": "UGC y pruebas de producto",
+      "descripcion": "Videos cortos de clientes reales probándose uniformes o mostrando la calidad de la tela generan más confianza que la publicidad tradicional.",
+      "plataforma": "Ambas"
+    },
+    {
+      "formato": "Carruseles",
+      "descripcion": "En Instagram, los carruseles están generando más vistas e interacciones que los reels porque la plataforma los vuelve a mostrar a quienes no interactuaron la primera vez.",
+      "plataforma": "Instagram"
+    },
+    {
+      "formato": "Contenido ligado al Mundial 2026 sin ser sponsor oficial",
+      "descripcion": "Los usuarios de TikTok en LATAM consideran una marca si publica contenido relevante del torneo aunque no sea patrocinador, con alto potencial de conversión a compra.",
+      "plataforma": "TikTok"
+    },
+    {
+      "formato": "Detrás de cámaras / backstage de equipo",
+      "descripcion": "Mostrar al equipo de trabajo, taller de confección o entrenamientos humaniza la marca y genera cercanía con la comunidad.",
+      "plataforma": "Ambas"
+    },
+    {
+      "formato": "Retos, coreografías y sonidos virales adaptados a marca",
+      "descripcion": "Grabar al equipo o a jugadores jóvenes haciendo un trend viral del momento (coreografía o sonido) ayuda a viralizar y mostrar personalidad de marca.",
+      "plataforma": "TikTok"
+    },
+    {
+      "formato": "Hauls y códigos de descuento en vivo",
+      "descripcion": "Formatos de 'haul' mostrando productos nuevos con cupones o promociones puntuales generan alto engagement y urgencia de compra.",
+      "plataforma": "TikTok"
+    }
+  ],
+  "sugerencias_campana": [
+    "Lanzar línea 'Acrux FC Fan Wear' con camisetas y hoodies casuales inspirados en el club, pensados para uso diario en Sibaté, Soacha y Bogotá, aprovechando la tendencia footballcore.",
+    "Ofrecer personalización de uniformes (nombre, número, escudo del barrio/escuela) como servicio destacado, resaltando la tecnología de sublimación como diferencial.",
+    "Crear colaboración o activación con escuelas de fútbol base locales en Sibaté y Soacha para generar contenido UGC auténtico de niños y padres usando los uniformes.",
+    "Aprovechar el Mundial 2026 con contenido relacionado (sin necesidad de ser sponsor oficial) para captar la conversación digital y aumentar consideración de marca.",
+    "Desarrollar carruseles en Instagram mostrando guías de tallas, comparativos de telas y 'antes/después' de uniformes personalizados para maximizar alcance orgánico.",
+    "Lanzar promociones tipo 'haul' con códigos de descuento exclusivos para seguidores de TikTok en la zona de Bogotá-Sibaté-Soacha, con entrega o recogida local."
+  ],
+  "ideas_contenido": [
+    "Video de un niño de la escuela de fútbol base recibiendo su uniforme Acrux FC personalizado por primera vez, mostrando su reacción.",
+    "Reel comparando 'uniforme genérico vs uniforme Acrux FC' resaltando tela técnica, ajuste y personalización.",
+    "Carrusel en Instagram con guía de tallas y cuidado de las camisetas técnicas de fútbol base.",
+    "TikTok tipo 'behind the scenes' mostrando el proceso de sublimación/personalización de una camiseta con nombre y número.",
+    "Challenge/coreografía viral del momento grabada por el equipo de Acrux FC o jugadores juveniles con el uniforme puesto.",
+    "Video 'Día de partido' mostrando la rutina de un equipo de futbol base de Soacha vistiendo Acrux FC, desde el vestuario hasta la cancha.",
+    "Post/reel de testimonio de un padre de familia de Sibaté hablando de la calidad y durabilidad del uniforme para su hijo.",
+    "Live o video corto anunciando código de descuento exclusivo por tiempo limitado para clientes de Bogotá, Soacha y Sibaté."
+  ],
+  "fecha_publicacion": "2026-08-20T15:27:06.345815+00:00"
+}
