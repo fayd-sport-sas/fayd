@@ -884,7 +884,20 @@ function Catalogo() {
     fetch('/content/catalogo.json')
       .then((res) => (res.ok ? res.json() : Promise.reject('sin catalogo')))
       .then((json) => {
-        if (Array.isArray(json) && json.length > 0) setCatalogo(json);
+        if (!Array.isArray(json) || json.length === 0) return;
+        // El pipeline publica `imagen`/`imagen_url`; la web consume `src`. Se
+        // prefiere la ruta relativa (sobrevive a cambios de dominio). La
+        // categoría se normaliza a id ASCII (niño→nino) para los filtros.
+        setCatalogo(
+          json.map((p) => ({
+            ...p,
+            src: p.src || p.imagen || p.imagen_url,
+            categoria:
+              typeof p.categoria === 'string'
+                ? p.categoria.replace(/ñ/g, 'n').replace(/Ñ/g, 'N')
+                : p.categoria,
+          }))
+        );
       })
       .catch(() => {/* usa fallback */});
   }, []);
