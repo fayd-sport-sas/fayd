@@ -150,9 +150,26 @@ const CATALOGO_FALLBACK = [
   })),
 ];
 
+// Etiquetas visibles de las líneas del catálogo. Los ids son ASCII (Enmienda
+// 2: así los escribe el pipeline en catalogo.json); las ñ viven solo en la UI.
+const ETIQUETAS_CATEGORIA = {
+  nino: 'Niño',
+  nina: 'Niña',
+  mujer: 'Mujer',
+  hombre: 'Hombre',
+  adulto: 'Adulto',
+};
+const etiquetaCategoria = (cat) =>
+  ETIQUETAS_CATEGORIA[cat] ||
+  (typeof cat === 'string' && cat ? cat.charAt(0).toUpperCase() + cat.slice(1) : '');
+
 const GALERIA_FILTROS = [
   { id: 'all', label: 'Todo' },
   { id: 'nino', label: 'Niño' },
+  { id: 'nina', label: 'Niña' },
+  { id: 'mujer', label: 'Mujer' },
+  { id: 'hombre', label: 'Hombre' },
+  // Adulto se muestra solo mientras haya prendas de esa línea (las 2 reales).
   { id: 'adulto', label: 'Adulto' },
 ];
 
@@ -888,15 +905,26 @@ function Catalogo() {
         // El pipeline publica `imagen`/`imagen_url`; la web consume `src`. Se
         // prefiere la ruta relativa (sobrevive a cambios de dominio). La
         // categoría se normaliza a id ASCII (niño→nino) para los filtros.
+        const normalizados = json.map((p) => ({
+          ...p,
+          src: p.src || p.imagen || p.imagen_url,
+          categoria:
+            typeof p.categoria === 'string'
+              ? p.categoria.replace(/ñ/g, 'n').replace(/Ñ/g, 'N')
+              : p.categoria,
+        }));
+        // Dedup defensivo (B.4): si el JSON trajera un duplicado (mismo id o
+        // misma imagen), la web muestra uno solo.
+        const vistos = new Set();
         setCatalogo(
-          json.map((p) => ({
-            ...p,
-            src: p.src || p.imagen || p.imagen_url,
-            categoria:
-              typeof p.categoria === 'string'
-                ? p.categoria.replace(/ñ/g, 'n').replace(/Ñ/g, 'N')
-                : p.categoria,
-          }))
+          normalizados.filter((p) => {
+            const dup =
+              (p.id && vistos.has(`id:${p.id}`)) ||
+              (p.src && vistos.has(`img:${p.src}`));
+            if (p.id) vistos.add(`id:${p.id}`);
+            if (p.src) vistos.add(`img:${p.src}`);
+            return !dup;
+          })
         );
       })
       .catch(() => {/* usa fallback */});
@@ -905,6 +933,16 @@ function Catalogo() {
   const items = useMemo(
     () => (filtro === 'all' ? catalogo : catalogo.filter((p) => p.categoria === filtro)),
     [filtro, catalogo]
+  );
+
+  // Las 4 líneas nuevas van siempre visibles (marcadores hasta que las llene
+  // el pipeline); Adulto solo mientras existan prendas de esa línea.
+  const filtros = useMemo(
+    () =>
+      GALERIA_FILTROS.filter(
+        (f) => f.id !== 'adulto' || catalogo.some((p) => p.categoria === 'adulto')
+      ),
+    [catalogo]
   );
 
   useEffect(() => {
@@ -930,7 +968,7 @@ function Catalogo() {
 
         {/* Filtros */}
         <div className="flex justify-center gap-3 mb-10 flex-wrap">
-          {GALERIA_FILTROS.map((f) => (
+          {filtros.map((f) => (
             <button
               key={f.id}
               type="button"
@@ -964,9 +1002,11 @@ function Catalogo() {
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <span className="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black text-black uppercase tracking-wider">
-                    {p.categoria === 'nino' ? 'Niño' : 'Adulto'}
-                  </span>
+                  {etiquetaCategoria(p.categoria) && (
+                    <span className="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black text-black uppercase tracking-wider">
+                      {etiquetaCategoria(p.categoria)}
+                    </span>
+                  )}
                   {/* Badges de escasez / novedad */}
                   {p.badge && (
                     <span className={cls(
@@ -1002,6 +1042,22 @@ function Catalogo() {
               </button>
             </RevealOnScroll>
           ))}
+          {items.length === 0 && (
+            <div className="col-span-full text-center py-16">
+              <p className="text-black font-black text-lg">Colección en camino 🔥</p>
+              <p className="text-neutral-500 text-sm mt-1">
+                Estamos preparando esta línea. Pregúntanos por WhatsApp qué hay disponible hoy.
+              </p>
+              <div className="mt-5">
+                <Button
+                  variant="whatsapp"
+                  href={buildWaLink(CONFIG.whatsapp.number, 'Hola FAYD, ¿qué prendas tienen disponibles hoy?')}
+                >
+                  💬 Consultar disponibilidad
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -1036,7 +1092,7 @@ function Catalogo() {
             </div>
             <div className="p-6 sm:p-8 flex flex-col justify-center">
               <p className="text-red-600 font-black text-xs tracking-widest uppercase mb-2">
-                {activa.categoria === 'nino' ? 'Línea Niño' : 'Línea Adulto'}
+                {`Línea ${etiquetaCategoria(activa.categoria) || 'FAYD'}`}
               </p>
               <h3 className="text-black text-2xl font-black">{activa.titulo || activa.nombre}</h3>
               {activa.precio_formateado && (
