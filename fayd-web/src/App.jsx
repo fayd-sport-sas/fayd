@@ -62,6 +62,7 @@ const NAV_LINKS = [
   { href: '#uniformes', label: 'Uniformes' },
   { href: '#looks', label: 'Looks' },
   { href: '#noticias', label: 'Noticias' },
+  { href: '#galeria', label: 'Galería' },
   { href: '#info', label: 'Info' },
   { href: '#contacto', label: 'Contacto' },
 ];
@@ -513,17 +514,20 @@ function useReveal(threshold = 0.15, delay = 0) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     if (!ref) return;
+    let timer;
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          const t = setTimeout(() => setVisible(true), delay);
-          return () => clearTimeout(t);
+          timer = setTimeout(() => setVisible(true), delay);
         }
       },
       { threshold }
     );
     obs.observe(ref);
-    return () => obs.disconnect();
+    return () => {
+      clearTimeout(timer);
+      obs.disconnect();
+    };
   }, [ref, threshold, delay]);
   return {
     ref: setRef,
