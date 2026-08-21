@@ -5,7 +5,12 @@
 import { buildWaLink } from '../lib/utils';
 import { RevealOnScroll, Button } from '../components/ui';
 import { CONFIG } from '../data/config';
-import { FOTOS_NINO, FOTOS_VARIADAS } from '../data/catalogo';
+
+const FOTOS_PORTADA = [
+  { src: '/foto/portada/athletic_catalog_portrait.webp', alt: 'Catálogo deportivo FAYD' },
+  { src: '/foto/portada/golden_hour_sunset.webp', alt: 'Estilo deportivo FAYD al atardecer' },
+  { src: '/foto/portada/golden_hour_sunset_1.webp', alt: 'Prendas FAYD en hora dorada' },
+];
 
 export default function Hero() {
   return (
@@ -52,33 +57,27 @@ export default function Hero() {
           </RevealOnScroll>
         </div>
 
-        {/* Collage de fotos del hero */}
+        {/* Collage de fotos del hero (portada real FAYD) */}
         <RevealOnScroll delay={200} className="hidden lg:block">
           <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-4">
+            <div>
               <img
-                src={`/foto/fotos_fayd/bariada/${FOTOS_VARIADAS[0]}`}
-                alt="Prenda deportiva FAYD"
-                className="rounded-2xl w-full aspect-[3/4] object-cover shadow-xl"
-                loading="eager"
-              />
-              <img
-                src={`/foto/fotos_fayd/nino/${FOTOS_NINO[1]}`}
-                alt="Línea infantil FAYD"
-                className="rounded-2xl w-full aspect-[3/4] object-cover shadow-xl"
+                src={FOTOS_PORTADA[0].src}
+                alt={FOTOS_PORTADA[0].alt}
+                className="rounded-2xl w-full h-full min-h-[560px] object-cover shadow-xl"
                 loading="eager"
               />
             </div>
             <div className="pt-10 space-y-4">
               <img
-                src={`/foto/fotos_fayd/nino/${FOTOS_NINO[0]}`}
-                alt="Ropa deportiva para niño"
+                src={FOTOS_PORTADA[1].src}
+                alt={FOTOS_PORTADA[1].alt}
                 className="rounded-2xl w-full aspect-[3/4] object-cover shadow-xl"
                 loading="eager"
               />
               <img
-                src={`/foto/fotos_fayd/bariada/${FOTOS_VARIADAS[2]}`}
-                alt="Diseño exclusivo FAYD"
+                src={FOTOS_PORTADA[2].src}
+                alt={FOTOS_PORTADA[2].alt}
                 className="rounded-2xl w-full aspect-[3/4] object-cover shadow-xl"
                 loading="eager"
               />
