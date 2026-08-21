@@ -24,7 +24,7 @@ export default function Galeria() {
 
   const fotos = useMemo(
     () => [
-      ...FOTOS_NINO.slice(2, 6).map((f) => `/foto/fotos_fayd/Niño/${f}`),
+      ...FOTOS_NINO.slice(2, 6).map((f) => `/foto/fotos_fayd/nino/${f}`),
       ...FOTOS_VARIADAS.slice(3, 13).map((f) => `/foto/fotos_fayd/bariada/${f}`),
     ],
     []

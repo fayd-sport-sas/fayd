@@ -24,8 +24,8 @@ export const LOOKS_FAYD = [
     descripcion: 'Outfit infantil completo — camiseta + short',
     whatsapp: 'Hola FAYD, me interesa el look Mini Champion',
     imagenes: [
-      `/foto/fotos_fayd/Niño/${FOTOS_NINO[0]}`,
-      `/foto/fotos_fayd/Niño/${FOTOS_NINO[2]}`,
+      `/foto/fotos_fayd/nino/${FOTOS_NINO[0]}`,
+      `/foto/fotos_fayd/nino/${FOTOS_NINO[2]}`,
     ],
     badge: 'Línea niño',
   },
@@ -47,7 +47,7 @@ export const LOOKS_FAYD = [
     whatsapp: 'Hola FAYD, me interesa el look Familia FAYD',
     imagenes: [
       `/foto/fotos_fayd/bariada/${FOTOS_VARIADAS[5]}`,
-      `/foto/fotos_fayd/Niño/${FOTOS_NINO[3]}`,
+      `/foto/fotos_fayd/nino/${FOTOS_NINO[3]}`,
     ],
     badge: 'Edición limitada',
   },
@@ -69,7 +69,7 @@ export const NOTICIAS_DEPORTISTAS = [
     badge: '🎙️ ENTREVISTA',
     badgeColor: 'red',
     image: '/foto/Rivaldo.png',
-    video: '/videos/presentacion%20de%20rivaldo.mp4',
+    video: '/videos/presentacion-de-rivaldo.mp4',
     fullContent: `Gracias a Acrux FC estoy jugando en Patriotas Boyacá.
 
 Quiero agradecer al Club Deportivo Patriotas de Tunja por abrirme las puertas y darme la oportunidad de formar parte de sus divisiones inferiores.
@@ -151,7 +151,7 @@ Regla de oro: una prenda deportiva + una neutra. El resto lo hace la actitud.`,
     fecha: '2026-08-12',
     badge: '👦 LÍNEA NIÑO',
     badgeColor: 'blue',
-    image: `/foto/fotos_fayd/Niño/${FOTOS_NINO[4]}`,
+    image: `/foto/fotos_fayd/nino/${FOTOS_NINO[4]}`,
     fullContent: `Un jugador bien equipado rinde más: ropa transpirable que no pega, guayes adecuados a la superficie y capas fáciles de quitar al calentar.
 
 La línea infantil FAYD está pensada para entrenar en serio y crecer cómodo.`,

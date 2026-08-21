@@ -63,7 +63,7 @@ export default function Hero() {
                 loading="eager"
               />
               <img
-                src={`/foto/fotos_fayd/Niño/${FOTOS_NINO[1]}`}
+                src={`/foto/fotos_fayd/nino/${FOTOS_NINO[1]}`}
                 alt="Línea infantil FAYD"
                 className="rounded-2xl w-full aspect-[3/4] object-cover shadow-xl"
                 loading="eager"
@@ -71,7 +71,7 @@ export default function Hero() {
             </div>
             <div className="pt-10 space-y-4">
               <img
-                src={`/foto/fotos_fayd/Niño/${FOTOS_NINO[0]}`}
+                src={`/foto/fotos_fayd/nino/${FOTOS_NINO[0]}`}
                 alt="Ropa deportiva para niño"
                 className="rounded-2xl w-full aspect-[3/4] object-cover shadow-xl"
                 loading="eager"

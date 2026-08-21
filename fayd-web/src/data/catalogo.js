@@ -72,17 +72,17 @@ export const CATALOGO_FALLBACK = [
   })),
   ...FOTOS_NINO.slice(0, 4).map((f, i) => ({
     id: `n${i}`,
-    src: `/foto/fotos_fayd/Niño/${f}`,
+    src: `/foto/fotos_fayd/nino/${f}`,
     categoria: 'nino',
     titulo: 'Línea infantil',
     precio: null,
     badge: i === 0 ? 'Nuevo' : null,
     vistas: vistasDemo(
-      `/foto/fotos_fayd/Niño/${f}`,
+      `/foto/fotos_fayd/nino/${f}`,
       FOTOS_NINO.slice(0, 6)
         .filter((x) => x !== f)
         .slice(0, 3)
-        .map((f2) => `/foto/fotos_fayd/Niño/${f2}`)
+        .map((f2) => `/foto/fotos_fayd/nino/${f2}`)
     ),
   })),
 ];
