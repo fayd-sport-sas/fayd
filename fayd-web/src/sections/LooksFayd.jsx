@@ -2,12 +2,17 @@
  * Looks FAYD — outfits completos listos para pedir.
  * Extraída de App.jsx sin cambios (refactor lote 2).
  */
+import { useState } from 'react';
 import { cls, buildWaLink } from '../lib/utils';
 import { Button, SectionHeader, RevealOnScroll } from '../components/ui';
+import Lightbox from '../components/Lightbox';
 import { CONFIG } from '../data/config';
 import { LOOKS_FAYD } from '../data/contenido';
 
 export default function LooksFayd() {
+  // Lightbox del collage: fotos del look a pantalla completa
+  const [lb, setLb] = useState(null); // {look, index}
+
   return (
     <section id="looks" className="py-20 sm:py-24 px-4 sm:px-8 bg-neutral-50 border-y border-neutral-100">
       <div className="max-w-6xl mx-auto">
@@ -21,16 +26,26 @@ export default function LooksFayd() {
           {LOOKS_FAYD.map((look, i) => (
             <RevealOnScroll key={look.id} delay={i * 100}>
               <div className="bg-white rounded-2xl overflow-hidden border-2 border-neutral-100 hover:border-red-600/40 transition-colors shadow-sm hover:shadow-lg group h-full flex flex-col">
-                {/* Collage de imágenes del look */}
+                {/* Collage de imágenes del look — click agranda */}
                 <div className="grid grid-cols-2 gap-0.5 aspect-square">
                   {look.imagenes.map((src, j) => (
-                    <img
+                    <button
                       key={j}
-                      src={src}
-                      alt={`${look.nombre} parte ${j + 1}`}
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                    />
+                      type="button"
+                      onClick={() => setLb({
+                        look,
+                        index: j,
+                      })}
+                      aria-label={`Ampliar foto ${j + 1} de ${look.nombre}`}
+                      className="overflow-hidden group/img"
+                    >
+                      <img
+                        src={src}
+                        alt={`${look.nombre} parte ${j + 1}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-110"
+                      />
+                    </button>
                   ))}
                 </div>
                 {/* Badge */}
@@ -63,6 +78,20 @@ export default function LooksFayd() {
           ))}
         </div>
       </div>
+
+      {/* Lightbox del look */}
+      {lb && (
+        <Lightbox
+          fotos={lb.look.imagenes.map((src, i) => ({
+            src,
+            alt: `${lb.look.nombre} — foto ${i + 1}`,
+            label: lb.look.nombre,
+          }))}
+          index={lb.index}
+          onClose={() => setLb(null)}
+          onChange={(i) => setLb((prev) => ({ ...prev, index: i }))}
+        />
+      )}
     </section>
   );
 }

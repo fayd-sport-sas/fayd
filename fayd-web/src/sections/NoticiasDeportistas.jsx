@@ -2,20 +2,34 @@
  * Noticias de deportistas — carrusel scroll-snap con noticias locales
  * (desde /content/noticias.json, publicado por fayd-content-system)
  * + historias estáticas. Modal con video/YouTube y caja "El look".
- * Extraída de App.jsx sin cambios (refactor lote 2).
+ * Cada tarjeta usa su propia portada (pool de respaldos distintos por
+ * índice para que nunca se repita la foto) y abre lightbox al ampliar.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { cls, formatDate, buildWaLink, U } from '../lib/utils';
 import { Button, SectionHeader } from '../components/ui';
+import Lightbox from '../components/Lightbox';
 import { CONFIG } from '../data/config';
 import { NOTICIAS_DEPORTISTAS } from '../data/contenido';
+
+// Respaldos DISTINTOS entre sí: si una noticia no trae portada o la imagen
+// falla, cada posición cae en una foto diferente (antes todas caían a una).
+const RESPALDOS_PORTADA = [
+  U('1431324155629-1a6deb1dec8d'), // estadio
+  U('1485125639709-a60c3a500bf1'), // balón / cancha
+  U('1522778119026-d647f0596c20'), // jugador
+  U('1517927012544-93bb74ca557f'), // hinchada
+  U('1553778263-73a83bab9b0c'), // entrenamiento
+  U('1574629810360-7efbbe195018'), // streetwear deportivo
+];
 
 export default function NoticiasDeportistas() {
   const scrollerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [noticia, setNoticia] = useState(null);
+  const [lb, setLb] = useState(null);
   // Noticias reales de fútbol local (Sibaté/Soacha) publicadas por
-  // fayd-content-system en /content/noticias.json (Google News + Pixabay)
+  // fayd-content-system en /content/noticias.json (Google News + portadas)
   const [locales, setLocales] = useState([]);
 
   useEffect(() => {
@@ -24,7 +38,7 @@ export default function NoticiasDeportistas() {
       .then((json) => {
         if (Array.isArray(json) && json.length > 0) {
           setLocales(
-            json.map((n) => ({
+            json.map((n, i) => ({
               id: `loc-${n.id}`,
               tipo: 'local',
               titulo: n.titulo,
@@ -32,7 +46,8 @@ export default function NoticiasDeportistas() {
               fecha: n.fecha,
               badge: n.badge || '📰 FÚTBOL LOCAL',
               badgeColor: n.badgeColor || 'red',
-              image: n.imagen_url || U('1431324155629-1a6deb1dec8d'),
+              image: n.imagen_url || RESPALDOS_PORTADA[i % RESPALDOS_PORTADA.length],
+              creditos: n.creditos,
               fuente: n.fuente,
               urlFuente: n.url_fuente,
             }))
@@ -43,6 +58,17 @@ export default function NoticiasDeportistas() {
   }, []);
 
   const items = useMemo(() => [...locales, ...NOTICIAS_DEPORTISTAS], [locales]);
+
+  // Fotos del carrusel para el lightbox (una entrada por noticia)
+  const fotosCarrusel = useMemo(
+    () =>
+      items.map((item) => ({
+        src: item.image,
+        alt: item.titulo,
+        label: item.fuente || undefined,
+      })),
+    [items]
+  );
 
   const scrollToIndex = useCallback((i) => {
     if (!scrollerRef.current) return;
@@ -96,7 +122,7 @@ export default function NoticiasDeportistas() {
           eyebrow="Deportistas y estilo"
           title="NOTICIAS Y"
           highlight="ENTREVISTAS"
-          description="Lo que pasa en el deporte y cómo lo visten sus protagonistas. Toca una historia para leerla completa."
+          description="Lo que pasa en el deporte y cómo lo visten sus protagonistas. Toca una historia para leerla completa o la lupa para agrandar su portada."
         />
 
         <div className="relative">
@@ -129,7 +155,7 @@ export default function NoticiasDeportistas() {
             style={{ scrollbarWidth: 'thin', scrollbarColor: '#dc2626 transparent' }}
             aria-label="Noticias y entrevistas de deportistas"
           >
-            {items.map((item) => (
+            {items.map((item, idx) => (
               <li
                 key={item.id}
                 className="snap-center shrink-0 w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
@@ -153,12 +179,13 @@ export default function NoticiasDeportistas() {
                       alt=""
                       loading="lazy"
                       onError={(e) => {
-                        e.currentTarget.src = U('1431324155629-1a6deb1dec8d');
+                        const respaldo = RESPALDOS_PORTADA[idx % RESPALDOS_PORTADA.length];
+                        if (e.currentTarget.src !== respaldo) e.currentTarget.src = respaldo;
                       }}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     {(item.video || item.youtubeId) && (
-                      <span className="absolute inset-0 flex items-center justify-center">
+                      <span className="absolute inset-0 flex items-center justify-center pointer-events-none">
                         <span className="w-14 h-14 rounded-full bg-white/90 text-black flex items-center justify-center text-xl shadow-xl group-hover:scale-110 transition-transform duration-300">
                           ▶
                         </span>
@@ -172,6 +199,18 @@ export default function NoticiasDeportistas() {
                     >
                       {item.badge}
                     </span>
+                    {/* Lupa: agranda la portada sin abrir la noticia */}
+                    <button
+                      type="button"
+                      aria-label={`Ampliar portada de: ${item.titulo}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setLb({ fotos: fotosCarrusel, index: idx });
+                      }}
+                      className="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-black/60 text-white text-sm opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity hover:bg-red-600 flex items-center justify-center"
+                    >
+                      🔍
+                    </button>
                   </div>
                   <div className="p-5 sm:p-6">
                     <time
@@ -257,11 +296,22 @@ export default function NoticiasDeportistas() {
                     className="w-full h-full"
                   />
                 ) : (
-                  <img
-                    src={noticia.image}
-                    alt={noticia.titulo}
-                    className="w-full h-full object-cover"
-                  />
+                  <>
+                    <img
+                      src={noticia.image}
+                      alt={noticia.titulo}
+                      className="w-full h-full object-cover cursor-zoom-in"
+                      onClick={() =>
+                        setLb({
+                          fotos: [{ src: noticia.image, alt: noticia.titulo }],
+                          index: 0,
+                        })
+                      }
+                    />
+                    <span className="absolute bottom-3 right-3 bg-black/60 text-white text-[10px] font-bold px-2.5 py-1 rounded-full pointer-events-none">
+                      🔍 Click para ampliar
+                    </span>
+                  </>
                 )}
                 <span
                   className={cls(
@@ -332,6 +382,16 @@ export default function NoticiasDeportistas() {
             </article>
           </div>
         </div>
+      )}
+
+      {/* Lightbox de portadas */}
+      {lb && (
+        <Lightbox
+          fotos={lb.fotos}
+          index={lb.index}
+          onClose={() => setLb(null)}
+          onChange={(i) => setLb((prev) => ({ ...prev, index: i }))}
+        />
       )}
     </section>
   );

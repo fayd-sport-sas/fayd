@@ -7,12 +7,14 @@
 import { useEffect, useMemo, useState } from 'react';
 import { cls, buildWaLink } from '../lib/utils';
 import { Button, SectionHeader, RevealOnScroll, VisorAngulos } from '../components/ui';
+import Lightbox from '../components/Lightbox';
 import { CONFIG, etiquetaCategoria } from '../data/config';
 import { CATALOGO_FALLBACK, GALERIA_FILTROS, vistasProducto } from '../data/catalogo';
 
 export default function Catalogo() {
   const [filtro, setFiltro] = useState('all');
   const [activa, setActiva] = useState(null);
+  const [zoom, setZoom] = useState(null); // {index} del lightbox de vistas
   // Catálogo dinámico: lo publica fayd-content-system en /content/catalogo.json.
   // Si aún no existe, se muestran las fotos fijas de respaldo.
   const [catalogo, setCatalogo] = useState(CATALOGO_FALLBACK);
@@ -202,13 +204,22 @@ export default function Catalogo() {
             className="bg-white rounded-3xl max-w-3xl w-full grid sm:grid-cols-2 max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="bg-neutral-100">
+            <div className="bg-neutral-100 relative">
               <VisorAngulos
                 key={activa.id || activa.src}
                 vistas={vistasProducto(activa)}
                 alt={activa.titulo || activa.nombre}
                 rounded="rounded-none"
               />
+              {/* Ampliar: abre las vistas a pantalla completa */}
+              <button
+                type="button"
+                onClick={() => setZoom({ index: 0 })}
+                aria-label="Ampliar fotos de la prenda"
+                className="absolute top-3 right-3 bg-black/60 hover:bg-red-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-full transition-colors"
+              >
+                🔍 Ampliar
+              </button>
             </div>
             <div className="p-6 sm:p-8 flex flex-col justify-center">
               <p className="text-red-600 font-black text-xs tracking-widest uppercase mb-2">
@@ -222,6 +233,39 @@ export default function Catalogo() {
                 Prenda deportiva FAYD. Consulta tallas, colores y disponibilidad por
                 WhatsApp.
               </p>
+              {/* Otros colores / variantes de la misma línea */}
+              {(() => {
+                const variantes = catalogo.filter(
+                  (p) => p.categoria === activa.categoria && p.id !== activa.id
+                );
+                if (variantes.length === 0) return null;
+                return (
+                  <div className="mt-5">
+                    <p className="text-neutral-400 text-[10px] font-black tracking-widest uppercase mb-2">
+                      Otros colores · misma línea
+                    </p>
+                    <div className="flex gap-2 flex-wrap">
+                      {variantes.map((v) => (
+                        <button
+                          key={v.id}
+                          type="button"
+                          onClick={() => setActiva(v)}
+                          aria-label={`Ver variante: ${v.titulo || v.nombre}`}
+                          title={v.titulo || v.nombre}
+                          className="w-14 h-14 rounded-xl overflow-hidden border-2 border-neutral-200 hover:border-red-600 transition-colors"
+                        >
+                          <img
+                            src={v.src}
+                            alt=""
+                            loading="lazy"
+                            className="w-full h-full object-cover"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
               <div className="mt-6">
                 <Button
                   href={buildWaLink(
@@ -235,6 +279,20 @@ export default function Catalogo() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Lightbox: fotos de la prenda a pantalla completa */}
+      {activa && zoom && (
+        <Lightbox
+          fotos={vistasProducto(activa).map((v) => ({
+            src: v.src,
+            alt: `${activa.titulo || activa.nombre} — ${v.label}`,
+            label: v.label,
+          }))}
+          index={zoom.index}
+          onClose={() => setZoom(null)}
+          onChange={(i) => setZoom({ index: i })}
+        />
       )}
     </section>
   );
